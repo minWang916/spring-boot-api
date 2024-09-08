@@ -1,0 +1,82 @@
+<configuration>
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>
+                %highlight(%d{yyyy-MM-dd HH:mm:ss.SSS}){cyan} %highlight([%thread]){magenta} %highlight(%-5level){faint,green,bold} %highlight(%logger{36}){yellow} - %msg%n%highlight(%throwable){red}
+            </pattern>
+        </encoder>
+    </appender>
+
+    <appender name="APP_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>../logs/app.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>logs/app-%d{yyyy-MM-dd}.log</fileNamePattern>
+0
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} - %level - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="AUTH_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>../logs/auth.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>logs/auth-%d{yyyy-MM-dd}.log</fileNamePattern>
+0
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} - %level - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="TASK_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>../logs/task.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>logs/task-%d{yyyy-MM-dd}.log</fileNamePattern>
+0
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} - %level - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="CONTACT_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>../logs/contact.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>logs/contact-%d{yyyy-MM-dd}.log</fileNamePattern>
+0
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} - %level - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="REPORT_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>../logs/report.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>logs/report-%d{yyyy-MM-dd}.log</fileNamePattern>
+0
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} - %level - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="com.kms.task" level="DEBUG">
+        <appender-ref ref="TASK_FILE" />
+    </logger>
+    <logger name="com.kms.contact" level="DEBUG">
+        <appender-ref ref="CONTACT_FILE" />
+    </logger>
+    <logger name="com.kms.auth" level="DEBUG">
+        <appender-ref ref="AUTH_FILE" />
+    </logger>
+    <logger name="com.kms.report" level="DEBUG">
+        <appender-ref ref="REPORT_FILE" />
+    </logger>
+
+    <root level="INFO">
+        <appender-ref ref="CONSOLE" />
+        <appender-ref ref="APP_FILE" />
+    </root>
+</configuration>

@@ -1,0 +1,11 @@
+id,firstName,lastName,title,department,project,avatar,employeeId
+1,John,Doe,Manager,IT,Alpha Project,default,1001
+2,Jane,Smith,Developer,IT,Beta Project,default,1002
+3,Bob,Johnson,Designer,Design,Gamma Project,default,1003
+4,Alice,Williams,HR Manager,HR,Human Resources,default,1004
+5,Michael,Brown,Sales Lead,Sales,Sales Strategy,default,1005
+6,Emily,Davis,Accountant,Finance,Financial Planning,default,1006
+7,David,Miller,CTO,IT,Tech Innovations,default,1007
+8,Sarah,Wilson,Marketing Head,Marketing,Brand Awareness,default,1008
+9,Chris,Moore,Operations Manager,Operations,Operational Excellence,default,1009
+10,Linda,Taylor,Support Lead,Support,Customer Care,default,1010

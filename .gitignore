@@ -1,0 +1,8 @@
+.idea/
+target/
+.DS_Store
+logs/
+out/
+assignment.iml
+app.iml
+bom.iml
