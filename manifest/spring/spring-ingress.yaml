@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: spring-ingress
+spec:
+  rules:
+    - host: localhost
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: spring-nodeport-service
+                port:
+                  number: 30001
+

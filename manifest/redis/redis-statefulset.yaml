@@ -21,7 +21,12 @@ spec:
           volumeMounts:
             - name: redis-storage
               mountPath: /data
-      volumes:
-        - name: redis-storage
-          persistentVolumeClaim:
-            claimName: redis-pvc
+      volumeClaimTemplates:
+        - metadata:
+            name: redis-storage
+          spec:
+            accessModes: [ "ReadWriteOnce" ]
+            storageClassName: redis-storage-class
+            resources:
+              requests:
+                storage: 100Mi

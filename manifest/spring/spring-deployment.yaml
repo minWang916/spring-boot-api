@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: spring-container
-          image: taikhoan916/assignment:v2
+          image: taikhoan916/assignment:v1
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
