@@ -1,0 +1,35 @@
+replicaCount: 1
+
+image:
+  repository: taikhoan916/assignment
+  tag: v1
+  pullPolicy: Always
+
+postgres:
+  storageClass: postgres-storage-class
+  storage: 100Mi
+  db: spring_assignment
+  user: postgres
+  password: postgres
+
+redis:
+  storageClass: redis-storage-class
+  storage: 100Mi
+
+spring:
+  nodePort: 30001
+  ingressHost: localhost
+
+config:
+  springDocEnabled: "true"
+  mailHost: smtp.gmail.com
+  mailPort: 587
+  redisHost: redis-service
+  redisPort: 6379
+  corsAllowedOrigins: "http://localhost:8080,https://localhost:8080"
+  corsAllowedMethods: "GET,POST,PUT,DELETE,OPTIONS"
+  corsAllowedHeaders: "Authorization,Content-Type"
+  corsAllowCredentials: "true"
+  jwtExpirationMs: 6000000
+  jwtRefreshExpirationMs: 360000
+  jwtBlacklistTokensSet: blacklistedTokensSet

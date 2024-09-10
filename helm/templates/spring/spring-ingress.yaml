@@ -4,7 +4,7 @@ metadata:
   name: spring-ingress
 spec:
   rules:
-    - host: localhost
+    - host: "{{ .Values.spring.ingressHost }}"
       http:
         paths:
           - path: /
@@ -13,5 +13,4 @@ spec:
               service:
                 name: spring-nodeport-service
                 port:
-                  number: 30001
-
+                  number: {{ .Values.spring.nodePort }}

@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: spring-deployment
 spec:
-  replicas: 1
+  replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
       app: spring
@@ -14,8 +14,8 @@ spec:
     spec:
       containers:
         - name: spring-container
-          image: taikhoan916/assignment:v1
-          imagePullPolicy: Always
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: "{{ .Values.image.pullPolicy }}"
           ports:
             - containerPort: 8080
           envFrom:

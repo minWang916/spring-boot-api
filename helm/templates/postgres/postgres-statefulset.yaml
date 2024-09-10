@@ -19,7 +19,7 @@ spec:
             - containerPort: 5432
           env:
             - name: POSTGRES_DB
-              value: "spring_assignment"
+              value: "{{ .Values.postgres.db }}"
             - name: POSTGRES_USER
               valueFrom:
                 secretKeyRef:
@@ -33,12 +33,12 @@ spec:
           volumeMounts:
             - name: postgres-storage
               mountPath: /var/lib/postgresql/data
-      volumeClaimTemplates:
-        - metadata:
-            name: postgres-storage
-          spec:
-            accessModes: ["ReadWriteOnce"]
-            storageClassName: postgres-storage-class
-            resources:
-              requests:
-                storage: 100Mi
+  volumeClaimTemplates:
+    - metadata:
+        name: postgres-storage
+      spec:
+        accessModes: ["ReadWriteOnce"]
+        storageClassName: "{{ .Values.postgres.storageClass }}"
+        resources:
+          requests:
+            storage: "{{ .Values.postgres.storage }}"

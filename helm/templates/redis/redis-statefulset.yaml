@@ -17,16 +17,15 @@ spec:
           image: redis
           ports:
             - containerPort: 6379
-              name: redis
           volumeMounts:
             - name: redis-storage
               mountPath: /data
-      volumeClaimTemplates:
-        - metadata:
-            name: redis-storage
-          spec:
-            accessModes: [ "ReadWriteOnce" ]
-            storageClassName: redis-storage-class
-            resources:
-              requests:
-                storage: 100Mi
+  volumeClaimTemplates:
+    - metadata:
+        name: redis-storage
+      spec:
+        accessModes: [ "ReadWriteOnce" ]
+        storageClassName: "{{ .Values.redis.storageClass }}"
+        resources:
+          requests:
+            storage: "{{ .Values.redis.storage }}"
