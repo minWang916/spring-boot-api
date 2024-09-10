@@ -1,0 +1,38 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: test-connection
+  annotations:
+    "helm.sh/hook": test-success
+spec:
+  template:
+    metadata:
+      name: test-connection
+    spec:
+      containers:
+        - name: spring-connection
+          image: curlimages/curl
+          command: ["sh", "-c", "curl -s http://{{ include "name" . }}-spring-nodeport:8080/swagger-ui/index.html | grep swagger || exit 1"]
+    
+
+        - name: postgres-connection
+          image: postgres
+          env:
+            - name: POSTGRES_USER
+              valueFrom:
+                secretKeyRef:
+                  name: app-secret
+                  key: SPRING_DATASOURCE_USERNAME
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: app-secret
+                  key: SPRING_DATASOURCE_PASSWORD
+          command: ["sh", "-c", "pg_isready -h {{ include "name" . }}-postgres-service -U $POSTGRES_USER || exit 1"]
+
+        - name: redis-connection
+          image: redis
+          command: ["sh", "-c", 'redis-cli -h {{ include "name" . }}-redis-service ping | grep PONG || exit 1']
+
+      restartPolicy: Never
+  backoffLimit: 1

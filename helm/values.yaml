@@ -30,6 +30,6 @@ config:
   corsAllowedMethods: "GET,POST,PUT,DELETE,OPTIONS"
   corsAllowedHeaders: "Authorization,Content-Type"
   corsAllowCredentials: "true"
-  jwtExpirationMs: 6000000
+  jwtExpirationMs: 60000
   jwtRefreshExpirationMs: 360000
   jwtBlacklistTokensSet: blacklistedTokensSet

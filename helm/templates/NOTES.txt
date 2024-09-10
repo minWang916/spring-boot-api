@@ -1,0 +1,6 @@
+1. Spring Boot application has been deployed.
+
+   To access it, use the NodePort service:
+   minikube service {{ include "name" . }}-spring-nodeport --url
+
+2. Postgres and Redis services are up and running.

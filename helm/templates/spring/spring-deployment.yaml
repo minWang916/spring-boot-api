@@ -13,7 +13,7 @@ spec:
         app: spring
     spec:
       containers:
-        - name: spring-container
+        - name: {{ include "name" . }}-spring-container
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: "{{ .Values.image.pullPolicy }}"
           ports:
